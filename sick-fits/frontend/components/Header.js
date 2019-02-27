@@ -65,9 +65,9 @@ const Header = () => {
         <Nav />
       </div>
       <div className="sub-bar">
-        <p>Search</p>
+        <p>Projects</p>
       </div>
-      <div>Cart</div>
+      <div>Skills</div>
     </StyledHeader>
   );
 };

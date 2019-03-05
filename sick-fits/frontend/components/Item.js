@@ -10,18 +10,18 @@ import formatMoney from '../lib/formatMoney';
 export default class Item extends Component {
   static propTypes = {
     item: PropTypes.object.isRequired
-  }
-  
+  };
+
   render() {
     const { item } = this.props;
     return (
       <ItemStyles>
         {item.image && <img src={item.image} alt={item.title} />}
         <Title>
-          <Link 
+          <Link
             href={{
-              pathname: "/item",
-              query: {id: item.id}
+              pathname: '/item',
+              query: { id: item.id }
             }}
           >
             <a>{item.title}</a>
@@ -30,10 +30,10 @@ export default class Item extends Component {
         <PriceTag>{formatMoney(item.price)}</PriceTag>
         <p>{item.description}</p>
         <div className="buttonList">
-          <Link 
+          <Link
             href={{
-              pathname: "update",
-              query: {id: item.id}
+              pathname: 'update',
+              query: { id: item.id }
             }}
           >
             <a>Edit ✏️</a>
@@ -41,9 +41,7 @@ export default class Item extends Component {
           <button>Add to 🛒</button>
           <DeleteItem id={item.id}>Delete This Item</DeleteItem>
         </div>
-      </ItemStyles>);
-    }
+      </ItemStyles>
+    );
   }
-  
-  
-  
+}

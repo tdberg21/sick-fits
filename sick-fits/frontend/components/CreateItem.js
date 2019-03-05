@@ -43,18 +43,19 @@ class CreateItem extends Component {
     });
   };
 
-  uploadFile = async (event) => {
-    console.log('uploading file')
+  uploadFile = async event => {
     const files = event.target.files;
     const data = new FormData();
     data.append('file', files[0]);
     data.append('upload_preset', 'sickfits');
 
-    const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
-    const response = await fetch(`https://api.cloudinary.com/v1_1/tdberg/image/upload`, {
-      method: 'POST',
-      body: data
-    });
+    const response = await fetch(
+      `https://api.cloudinary.com/v1_1/tdberg/image/upload`,
+      {
+        method: 'POST',
+        body: data
+      }
+    );
     const file = await response.json();
     this.setState({
       image: file.secure_url,
@@ -71,16 +72,13 @@ class CreateItem extends Component {
               event.preventDefault();
               const response = await createItem();
               Router.push({
-                pathname: '/items',
+                pathname: '/item',
                 query: { id: response.data.createItem.id }
-              })
+              });
             }}
           >
             <Error error={error} />
-            <fieldset 
-              disabled={loading} 
-              aria-busy={loading}
-            >
+            <fieldset disabled={loading} aria-busy={loading}>
               <label htmlFor="file">
                 Image
                 <input
@@ -91,7 +89,9 @@ class CreateItem extends Component {
                   required
                   onChange={this.uploadFile}
                 />
-                {this.state.image && <img src={this.state.image} alt="Upload Preview" />}
+                {this.state.image && (
+                  <img src={this.state.image} alt="Upload Preview" />
+                )}
               </label>
               <label htmlFor="title">
                 Title

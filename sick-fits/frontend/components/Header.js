@@ -1,18 +1,18 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import Nav from './Nav.js';
 import Router from 'next/router';
 import NProgress from 'nprogress';
+import Nav from './Nav.js';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
-}
+};
 Router.onRouteChangeComplete = () => {
   NProgress.done();
-}
+};
 Router.onRouteChangeError = () => {
   NProgress.done();
-}
+};
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -59,7 +59,7 @@ const Header = () => {
       <div className="bar">
         <Logo>
           <Link href="/">
-              <a>Sick Fits!</a>
+            <a>Sick Fits!</a>
           </Link>
         </Logo>
         <Nav />

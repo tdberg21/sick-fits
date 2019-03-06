@@ -44,6 +44,9 @@ const Pagination = props => {
             <p>
               Page {props.page} of {pages}
             </p>
+            <p>
+              Total Items: {count}
+            </p>
             <Link
               prefetch
               href={{
